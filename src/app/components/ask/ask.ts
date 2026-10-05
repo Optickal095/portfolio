@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  LOCALE_ID,
   OnInit,
   afterRenderEffect,
   inject,
@@ -19,6 +20,7 @@ import { Prompt } from '../prompt/prompt';
 })
 export class Ask implements OnInit {
   protected readonly chat = inject(ChatService);
+  protected readonly locale: 'es' | 'en' = inject(LOCALE_ID).startsWith('en') ? 'en' : 'es';
   protected readonly draft = signal('');
   protected readonly suggestions = [
     $localize`:@@ask.suggestion.canai:¿Qué hizo en Canai?`,

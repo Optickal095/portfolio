@@ -14,6 +14,7 @@
     "ask.label": "Your question",
     "ask.placeholder": "Type your question…",
     "ask.send": " send ↵ ",
+    "ask.sources": "sources:",
     "ask.suggestion.canai": "What did he do at Canai?",
     "ask.suggestion.stack": "Does he have experience with NestJS and Google Cloud?",
     "ask.suggestion.ai": "What has he built with AI?",

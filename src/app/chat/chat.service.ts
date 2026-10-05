@@ -2,14 +2,21 @@ import { Injectable, LOCALE_ID, computed, inject, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { readSseEvents } from './sse';
 
+/** A CV section the answer cites, named in both languages of the site. */
+export interface ChatSource {
+  es: string;
+  en: string;
+}
+
 export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
   error?: boolean;
+  sources?: ChatSource[];
 }
 
 type ChatStreamEvent =
-  | { type: 'sources'; sources: string[] }
+  | { type: 'sources'; sources: ChatSource[] }
   | { type: 'token'; text: string }
   | { type: 'done' }
   | { type: 'error'; message: string };
@@ -77,6 +84,14 @@ export class ChatService {
         if (event.type === 'token') {
           this.status.set('streaming');
           this.updateAnswer((answer) => ({ ...answer, content: answer.content + event.text }));
+        } else if (event.type === 'sources') {
+          // Sent once the answer is complete; the space before the hidden
+          // citation marker is trimmed too.
+          this.updateAnswer((answer) => ({
+            ...answer,
+            content: answer.content.trimEnd(),
+            sources: event.sources,
+          }));
         } else if (event.type === 'error') {
           throw new Error(ERRORS.unavailable);
         }

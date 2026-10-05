@@ -10,6 +10,7 @@
     "ask.intro": " Pregúntale a mi CV. Un asistente con IA responde usando solo la información de mi experiencia, construido con NestJS, LangChain y RAG. {$START_LINK}ver código ↗{$CLOSE_LINK}",
     "ask.clear": " limpiar ",
     "ask.thinking": "pensando",
+    "ask.sources": "fuentes:",
     "ask.hint": " Prueba con una de estas preguntas o escribe la tuya: ",
     "ask.label": "Tu pregunta",
     "ask.placeholder": "Escribe tu pregunta…",

@@ -35,6 +35,14 @@
                   <span class="cursor">▍</span>
                 }
               </p>
+              @if (message.sources?.length) {
+                <p class="sources">
+                  <span class="sources-label" i18n="@@ask.sources">fuentes:</span>
+                  @for (source of message.sources; track source.es) {
+                    <span class="source">{{ source[locale] }}</span>
+                  }
+                </p>
+              }
             }
           } @empty {
             <p class="hint" i18n="@@ask.hint">
