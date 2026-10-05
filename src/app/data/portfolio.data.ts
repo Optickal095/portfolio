@@ -94,10 +94,10 @@ export const EXPERIENCE: Experience[] = [
     summary: $localize`:@@exp.umov.summary:Plataforma web complementaria a un dispositivo médico para la rehabilitación de pacientes post-accidente cerebrovascular.`,
     highlights: [
       $localize`:@@exp.umov.h1:Gráficas de la evolución del paciente en el tiempo para profesionales de la salud.`,
-      $localize`:@@exp.umov.h2:Módulos escalables con React y Ant Design, MySQL y consumo de APIs.`,
+      $localize`:@@exp.umov.h2:Módulos escalables con React y Ant Design en JavaScript y TypeScript, MySQL y consumo de APIs.`,
       $localize`:@@exp.umov.h3:Colaboración con diseñadores, CEO y CIO del proyecto.`,
     ],
-    stack: ['react', 'ant-design', 'mysql'],
+    stack: ['react', 'ant-design', 'javascript', 'typescript', 'mysql'],
   },
   {
     role: $localize`:@@exp.thesis.role:Proyecto de Título`,
