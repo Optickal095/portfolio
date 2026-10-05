@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Ask } from './components/ask/ask';
 import { Contact } from './components/contact/contact';
 import { Education } from './components/education/education';
 import { Experience } from './components/experience/experience';
@@ -10,7 +11,7 @@ import { Tech } from './components/tech/tech';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Hero, Experience, Projects, Tech, Education, Contact, Footer],
+  imports: [Header, Hero, Ask, Experience, Projects, Tech, Education, Contact, Footer],
   templateUrl: './app.html',
 })
 export class App {}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ChatService } from '../../chat/chat.service';
 
 @Component({
   selector: 'app-header',
@@ -17,5 +18,12 @@ import { Component } from '@angular/core';
   styleUrl: './header.css',
 })
 export class Header {
-  protected readonly links = ['experiencia', 'proyectos', 'tecnologias', 'contacto'];
+  protected readonly links = [
+    // The chat section only exists when its API is configured.
+    ...(inject(ChatService).enabled ? ['pregunta'] : []),
+    'experiencia',
+    'proyectos',
+    'tecnologias',
+    'contacto',
+  ];
 }

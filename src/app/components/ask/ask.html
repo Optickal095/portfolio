@@ -1,0 +1,64 @@
+@if (chat.enabled) {
+  <section id="pregunta" class="section">
+    <div class="container stack">
+      <app-prompt command="./pregunta-a-mi-cv" />
+      <p class="intro">
+        Pregúntale a mi CV. Un asistente con IA responde usando solo la información de mi
+        experiencia, construido con NestJS, LangChain y RAG.
+        <a href="https://github.com/Optickal095/pregunta-a-mi-cv" target="_blank" rel="noopener"
+          >ver código ↗</a
+        >
+      </p>
+
+      <div class="terminal">
+        <div class="bar">
+          <span>pregunta-a-mi-cv</span>
+          @if (chat.messages().length && !chat.busy()) {
+            <button type="button" class="clear" (click)="chat.clear()">limpiar</button>
+          }
+        </div>
+
+        <div class="log" #log aria-live="polite">
+          @for (message of chat.messages(); track $index; let last = $last) {
+            @if (message.role === 'user') {
+              <p class="question"><span class="mark">›</span> {{ message.content }}</p>
+            } @else if (last && chat.status() === 'thinking') {
+              <p class="answer thinking">pensando<span class="cursor">▍</span></p>
+            } @else {
+              <p class="answer" [class.error]="message.error">
+                <span [innerHTML]="message.content | inlineMarkdown"></span>
+                @if (last && chat.status() === 'streaming') {
+                  <span class="cursor">▍</span>
+                }
+              </p>
+            }
+          } @empty {
+            <p class="hint">Prueba con una de estas preguntas o escribe la tuya:</p>
+            <div class="suggestions">
+              @for (question of suggestions; track question) {
+                <button type="button" (click)="ask(question)">{{ question }}</button>
+              }
+            </div>
+          }
+        </div>
+
+        <form (submit)="submit($event)">
+          <label class="sr-only" for="question">Tu pregunta</label>
+          <span class="mark" aria-hidden="true">›</span>
+          <input
+            #input
+            id="question"
+            type="text"
+            autocomplete="off"
+            maxlength="500"
+            placeholder="Escribe tu pregunta…"
+            [value]="draft()"
+            (input)="draft.set(input.value)"
+            [disabled]="chat.busy()"
+          />
+          <button type="submit" [disabled]="chat.busy() || !draft().trim()">enviar ↵</button>
+        </form>
+      </div>
+    </div>
+  </section>
+}
