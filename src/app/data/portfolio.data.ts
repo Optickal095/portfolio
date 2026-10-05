@@ -6,14 +6,18 @@ import {
   siExpress,
   siGit,
   siGithub,
+  siGooglecloud,
   siHtml5,
   siInsomnia,
   siJavascript,
+  siLangchain,
   siMongodb,
   siMysql,
+  siNestjs,
   siNodedotjs,
   siPhp,
   siPostgresql,
+  siPrisma,
   siReact,
   siTypescript,
 } from 'simple-icons';
@@ -178,11 +182,30 @@ export const TECH: TechGroup[] = [
   },
   {
     title: 'Backend',
-    items: [icon('Node.js', siNodedotjs), icon('Express', siExpress, LIGHT)],
+    items: [
+      icon('Node.js', siNodedotjs),
+      icon('NestJS', siNestjs),
+      icon('Express', siExpress, LIGHT),
+      icon('Prisma', siPrisma, LIGHT),
+    ],
   },
   {
     title: 'Bases de datos',
     items: [icon('MySQL', siMysql, '#5b9bd5'), icon('PostgreSQL', siPostgresql, '#6b8ff0'), icon('MongoDB', siMongodb)],
+  },
+  {
+    title: 'Cloud e IA',
+    items: [
+      icon('Google Cloud', siGooglecloud),
+      icon('LangChain', siLangchain),
+      // OpenAI is not in simple-icons; a generic sparkle stands in for it.
+      {
+        name: 'OpenAI',
+        path: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z',
+        color: '#10a37f',
+        stroke: true,
+      },
+    ],
   },
   {
     title: 'Herramientas',
