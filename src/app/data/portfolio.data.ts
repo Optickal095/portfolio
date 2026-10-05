@@ -1,3 +1,23 @@
+import {
+  type SimpleIcon,
+  siAngular,
+  siBootstrap,
+  siCss,
+  siExpress,
+  siGit,
+  siGithub,
+  siHtml5,
+  siInsomnia,
+  siJavascript,
+  siMongodb,
+  siMysql,
+  siNodedotjs,
+  siPhp,
+  siPostgresql,
+  siReact,
+  siTypescript,
+} from 'simple-icons';
+
 export interface Link {
   label: string;
   url: string;
@@ -13,16 +33,25 @@ export interface Experience {
 }
 
 export interface Project {
+  slug: string;
   name: string;
   description: string;
-  stack: string[];
   note?: string;
   links?: Link[];
 }
 
-export interface SkillGroup {
+export interface Tech {
+  name: string;
+  /** SVG path in a 24x24 viewBox. */
+  path: string;
+  color: string;
+  /** Draw the path as a stroke instead of a fill. */
+  stroke?: boolean;
+}
+
+export interface TechGroup {
   title: string;
-  items: string[];
+  items: Tech[];
 }
 
 export interface Education {
@@ -33,13 +62,8 @@ export interface Education {
 
 export const PROFILE = {
   name: 'Eduardo Hernández Oyarzún',
-  title: 'Ingeniero de Ejecución en Computación e Informática',
   tagline:
-    'Desarrollador fullstack con TypeScript en todo el stack: Angular y React en frontend, Node.js/NestJS en backend, servicios serverless en Google Cloud y un agente de IA en producción.',
-  about: [
-    'Soy Ingeniero Informático fullstack, con experiencia en Angular y React en frontend, y Node.js/NestJS en backend, sobre bases de datos relacionales (PostgreSQL, MySQL) y no relacionales (MongoDB). He construido servicios serverless en Google Cloud y un agente de IA en producción (WhatsApp, OpenAI + LangChain) que procesa texto, imágenes y audio.',
-    'Me considero proactivo y autónomo, con foco en la resolución de problemas, la calidad del código y la entrega de APIs REST sólidas dentro de equipos ágiles.',
-  ],
+    'Ingeniero fullstack. Diseño APIs con NestJS, interfaces con Angular y llevo IA a producción sobre Google Cloud.',
   email: 'eduardo.he095@gmail.com',
   linkedin: 'https://www.linkedin.com/in/eduardohernandezoyarzun',
   github: 'https://github.com/Optickal095',
@@ -49,114 +73,135 @@ export const EXPERIENCE: Experience[] = [
   {
     role: 'Software Engineer',
     company: 'Canai',
-    period: 'Nov 2025 — Ago 2026',
+    period: 'Nov 2025 – Ago 2026',
     summary:
       'Plataforma de gestión de personal de campo y automatización de órdenes de trabajo, construida como un monorepo multi-proyecto.',
     highlights: [
       'Desarrollo fullstack con Angular (SPA basada en Signals) y NestJS (API BFF) sobre PostgreSQL con Prisma.',
-      'Vista de tareas del día con su estado y evidencias, y plantillas de tareas configurables según las necesidades de cada cliente.',
-      'Agente de IA por WhatsApp con OpenAI y LangChain: envío automático de órdenes de trabajo, verificación de imágenes, revisión de legibilidad de boletas y transcripción de audios.',
+      'Vista de tareas del día con su estado y evidencias, y plantillas de tareas configurables según cada cliente.',
+      'Agente de IA por WhatsApp con OpenAI y LangChain: envío de órdenes de trabajo, verificación de imágenes, revisión de boletas y transcripción de audios.',
       'Funciones serverless event-driven en Google Cloud (Cloud Run, Pub/Sub, Cloud Storage).',
-      'Arquitectura multi-tenant, patrón Repository (DDD) y estándares de código estrictos.',
+      'Arquitectura multi-tenant y patrón Repository (DDD).',
     ],
-    stack: ['Angular', 'NestJS', 'PostgreSQL', 'Prisma', 'GCP', 'LangChain', 'OpenAI'],
+    stack: ['angular', 'nestjs', 'postgresql', 'prisma', 'gcp', 'langchain', 'openai'],
   },
   {
     role: 'Desarrollador FullStack',
     company: 'uMov',
-    period: 'Dic 2023 — May 2024',
+    period: 'Dic 2023 – May 2024',
     summary:
-      'Plataforma web complementaria a un dispositivo médico que respalda la rehabilitación de pacientes post-accidente cerebrovascular.',
+      'Plataforma web complementaria a un dispositivo médico para la rehabilitación de pacientes post-accidente cerebrovascular.',
     highlights: [
-      'Visualización del progreso de las sesiones de rehabilitación con gráficas de la evolución del paciente en el tiempo.',
+      'Gráficas de la evolución del paciente en el tiempo para profesionales de la salud.',
       'Módulos escalables con React y Ant Design, MySQL y consumo de APIs.',
-      'Colaboración con diseñadores, CEO y CIO para asegurar la calidad del producto.',
+      'Colaboración con diseñadores, CEO y CIO del proyecto.',
     ],
-    stack: ['React', 'Ant Design', 'MySQL', 'APIs REST'],
+    stack: ['react', 'ant-design', 'mysql'],
   },
   {
     role: 'Proyecto de Título',
-    company: 'Universidad del Bío-Bío',
-    period: 'Mar 2023 — Ago 2023',
+    company: 'UBB',
+    period: 'Mar 2023 – Ago 2023',
     summary:
       'Red social para difundir el trabajo de músicos emergentes y permitir que organizadores de eventos contraten sus servicios.',
     highlights: [
       'MEAN stack (MongoDB, Express.js, Angular, Node.js), Bootstrap y JWT para autenticación.',
-      'Integración y consumo de APIs y servicios externos; optimización de rendimiento y seguridad.',
+      'Integración de APIs y servicios externos; optimización de rendimiento y seguridad.',
     ],
-    stack: ['MongoDB', 'Express', 'Angular', 'Node.js', 'JWT'],
+    stack: ['angular', 'node.js', 'express', 'mongodb', 'jwt'],
   },
   {
     role: 'Desarrollador',
     company: 'EzSolutions',
-    period: 'Oct 2021 — Ene 2022',
+    period: 'Oct 2021 – Ene 2022',
     summary: 'Aplicación web para un local comercial con los módulos clave para su funcionamiento.',
-    highlights: [
-      'Desarrollo con PHP y MySQL en equipo.',
-      'Colaboración en pruebas y levantamiento de requerimientos del cliente.',
-    ],
-    stack: ['PHP', 'MySQL'],
+    highlights: ['Desarrollo con PHP y MySQL en equipo.', 'Pruebas y levantamiento de requerimientos con el cliente.'],
+    stack: ['php', 'mysql'],
   },
 ];
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Agente de IA por WhatsApp',
+    slug: 'agente-ia-whatsapp/',
+    name: 'Agente de IA en producción',
     description:
-      'Agente en producción que conversa con clientes, envía órdenes de trabajo y procesa sus respuestas: valida imágenes, revisa la legibilidad de boletas y transcribe audios.',
-    stack: ['OpenAI', 'LangChain', 'Google Vision', 'GCP'],
-    note: 'Proyecto privado · Canai',
+      'Conversa con clientes por WhatsApp, envía órdenes de trabajo y procesa las respuestas con OpenAI, LangChain y Google Vision: valida imágenes, revisa boletas y transcribe audios.',
+    note: 'privado · canai',
   },
   {
-    name: 'Plataforma de rehabilitación uMov',
+    slug: 'umov/',
+    name: 'Rehabilitación post-ACV',
     description:
-      'Panel web para profesionales de la salud con gráficas de la evolución de pacientes en rehabilitación post-ACV.',
-    stack: ['React', 'Ant Design', 'MySQL'],
-    note: 'Proyecto privado · uMov',
+      'Panel web con gráficas de la evolución de pacientes para que los profesionales de la salud sigan su progreso.',
+    note: 'privado · umov',
   },
   {
+    slug: 'tocata/',
     name: 'Tocata',
-    description:
-      'Red social para músicos emergentes y organizadores de eventos. Proyecto de Título en la Universidad del Bío-Bío.',
-    stack: ['Angular', 'Node.js', 'MongoDB', 'JWT'],
+    description: 'Red social para músicos emergentes y organizadores de eventos. MEAN stack con JWT.',
     links: [
-      { label: 'Frontend', url: 'https://github.com/Optickal095/TocataFrontend' },
-      { label: 'Backend', url: 'https://github.com/Optickal095/TocataBackend' },
+      { label: 'frontend', url: 'https://github.com/Optickal095/TocataFrontend' },
+      { label: 'backend', url: 'https://github.com/Optickal095/TocataBackend' },
     ],
   },
   {
-    name: 'Este portfolio',
-    description:
-      'Sitio personal construido con Angular (componentes standalone y Signals), desplegado en GitHub Pages.',
-    stack: ['Angular', 'TypeScript', 'Signals'],
-    links: [{ label: 'Repositorio', url: 'https://github.com/Optickal095/portfolio' }],
+    slug: 'portfolio/',
+    name: 'Este sitio',
+    description: 'Angular con componentes standalone y Signals, desplegado en GitHub Pages.',
+    links: [{ label: 'repo', url: 'https://github.com/Optickal095/portfolio' }],
   },
 ];
 
-export const SKILLS: SkillGroup[] = [
-  { title: 'Frontend', items: ['Angular', 'React', 'TypeScript / JavaScript', 'HTML / CSS'] },
+const icon = (name: string, si: SimpleIcon, color = `#${si.hex}`): Tech => ({
+  name,
+  path: si.path,
+  color,
+});
+
+// Brand colors that are too dark for the page background use the text color instead.
+const LIGHT = '#d9dfea';
+
+export const TECH: TechGroup[] = [
+  {
+    title: 'Lenguajes',
+    items: [icon('JavaScript', siJavascript), icon('TypeScript', siTypescript), icon('PHP', siPhp)],
+  },
+  {
+    title: 'Frontend',
+    items: [
+      icon('Angular', siAngular, '#dd0031'),
+      icon('React', siReact),
+      icon('HTML5', siHtml5),
+      icon('CSS3', siCss, '#1572b6'),
+      icon('Bootstrap', siBootstrap, '#8c5cf0'),
+    ],
+  },
   {
     title: 'Backend',
-    items: ['Node.js / NestJS', 'APIs REST / Integraciones', 'Prisma', 'Patrón Repository / DDD'],
+    items: [icon('Node.js', siNodedotjs), icon('Express', siExpress, LIGHT)],
   },
   {
-    title: 'Datos y nube',
-    items: ['PostgreSQL / MySQL', 'MongoDB', 'Google Cloud (Cloud Run, Pub/Sub)', 'Git / GitHub'],
+    title: 'Bases de datos',
+    items: [icon('MySQL', siMysql, '#5b9bd5'), icon('PostgreSQL', siPostgresql, '#6b8ff0'), icon('MongoDB', siMongodb)],
   },
-  { title: 'IA', items: ['OpenAI', 'LangChain', 'Google Vision', 'Desarrollo asistido por IA'] },
+  {
+    title: 'Herramientas',
+    items: [
+      { name: 'VS Code', path: 'M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16', color: '#3b9cf0', stroke: true },
+      icon('Git', siGit),
+      icon('GitHub', siGithub, LIGHT),
+      icon('Insomnia', siInsomnia, '#8b6cf6'),
+    ],
+  },
 ];
 
 export const EDUCATION: Education[] = [
   {
     title: 'Ingeniería de Ejecución en Computación e Informática',
     institution: 'Universidad del Bío-Bío',
-    period: '2016 — 2023',
+    period: '2016 – 2023',
   },
-  {
-    title: 'Carrera de Desarrollo Frontend React',
-    institution: 'CoderHouse',
-    period: 'Jun 2023 — Ene 2024',
-  },
+  { title: 'Carrera de Desarrollo Frontend React', institution: 'CoderHouse', period: '2023 – 2024' },
 ];
 
-export const LANGUAGES = ['Español (Nativo)', 'Inglés (Avanzado)'];
+export const LANGUAGES = ['Español · nativo', 'Inglés · avanzado'];

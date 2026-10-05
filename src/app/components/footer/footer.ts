@@ -4,17 +4,17 @@ import { PROFILE } from '../../data/portfolio.data';
 @Component({
   selector: 'app-footer',
   template: `
-    <footer class="container">
-      <p>© {{ year }} {{ name }} · Hecho con Angular</p>
+    <footer>
+      <div class="container">© {{ year }} {{ name }} · hecho con Angular</div>
     </footer>
   `,
   styles: `
     footer {
-      padding-top: 32px;
-      padding-bottom: 48px;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--faint-text);
     }
   `,
 })
