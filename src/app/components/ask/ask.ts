@@ -21,9 +21,9 @@ export class Ask implements OnInit {
   protected readonly chat = inject(ChatService);
   protected readonly draft = signal('');
   protected readonly suggestions = [
-    '¿Qué hizo en Canai?',
-    '¿Tiene experiencia con NestJS y Google Cloud?',
-    '¿Qué construyó con IA?',
+    $localize`:@@ask.suggestion.canai:¿Qué hizo en Canai?`,
+    $localize`:@@ask.suggestion.stack:¿Tiene experiencia con NestJS y Google Cloud?`,
+    $localize`:@@ask.suggestion.ai:¿Qué construyó con IA?`,
   ];
 
   private readonly log = viewChild<ElementRef<HTMLElement>>('log');

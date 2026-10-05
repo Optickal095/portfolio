@@ -1,4 +1,4 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, LOCALE_ID, computed, inject, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { readSseEvents } from './sse';
 
@@ -18,13 +18,20 @@ type ChatStreamEvent =
 const MAX_HISTORY_TURNS = 10;
 const MAX_TURN_LENGTH = 2000;
 
-const CONNECTION_ERROR =
-  'No pude conectar con el asistente. Si es la primera pregunta, el servidor puede estar despertando: inténtalo de nuevo en unos segundos.';
+// The API's own error texts are Spanish; the page shows its own, by status code.
+const ERRORS = {
+  connection: $localize`:@@chat.error.connection:No pude conectar con el asistente. Si es la primera pregunta, el servidor puede estar despertando: inténtalo de nuevo en unos segundos.`,
+  tooMany: $localize`:@@chat.error.tooMany:Hiciste muchas preguntas seguidas. Espera un momento antes de volver a preguntar.`,
+  invalid: $localize`:@@chat.error.invalid:La pregunta no es válida. Revisa que no supere los 500 caracteres.`,
+  unavailable: $localize`:@@chat.error.unavailable:El asistente no está disponible en este momento. Inténtalo de nuevo en unos minutos.`,
+};
 
 /** Talks to the "Pregúntale a mi CV" API and keeps the conversation. */
 @Injectable({ providedIn: 'root' })
 export class ChatService {
   private readonly apiUrl = environment.chatApiUrl;
+  /** Lets the API answer unclear questions in the page's language. */
+  private readonly locale = inject(LOCALE_ID).startsWith('en') ? 'en' : 'es';
 
   readonly enabled = this.apiUrl !== null;
   readonly messages = signal<ChatMessage[]>([]);
@@ -60,10 +67,10 @@ export class ChatService {
       const response = await fetch(`${this.apiUrl}/chat/stream`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, history }),
+        body: JSON.stringify({ message, history, locale: this.locale }),
       });
       if (!response.ok || !response.body) {
-        throw new Error(await readErrorMessage(response));
+        throw new Error(errorForStatus(response.status));
       }
 
       for await (const event of readSseEvents<ChatStreamEvent>(response.body)) {
@@ -71,11 +78,11 @@ export class ChatService {
           this.status.set('streaming');
           this.updateAnswer((answer) => ({ ...answer, content: answer.content + event.text }));
         } else if (event.type === 'error') {
-          throw new Error(event.message);
+          throw new Error(ERRORS.unavailable);
         }
       }
     } catch (error) {
-      const text = error instanceof TypeError ? CONNECTION_ERROR : (error as Error).message;
+      const text = error instanceof TypeError ? ERRORS.connection : (error as Error).message;
       this.updateAnswer(() => ({ role: 'assistant', content: text, error: true }));
     } finally {
       this.status.set('idle');
@@ -95,12 +102,8 @@ export class ChatService {
   }
 }
 
-async function readErrorMessage(response: Response): Promise<string> {
-  try {
-    const { message } = await response.json();
-    // Validation errors come as a list.
-    return Array.isArray(message) ? 'La pregunta no es válida.' : String(message);
-  } catch {
-    return 'El asistente no está disponible en este momento.';
-  }
+function errorForStatus(status: number): string {
+  if (status === 429) return ERRORS.tooMany;
+  if (status === 400) return ERRORS.invalid;
+  return ERRORS.unavailable;
 }

@@ -8,9 +8,9 @@ import { Prompt } from '../prompt/prompt';
   template: `
     <section id="contacto" class="section">
       <div class="container stack contact">
-        <app-prompt command="echo $CONTACTO" />
+        <app-prompt command="echo $CONTACTO" i18n-command="@@contact.command" />
         <a class="email" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
-        <p>Abierto a roles fullstack, frontend Angular o backend NestJS.</p>
+        <p i18n="@@contact.openTo">Abierto a roles fullstack, frontend Angular o backend NestJS.</p>
         <div class="links">
           <a [href]="profile.linkedin" target="_blank" rel="noopener">linkedin ↗</a>
           <a [href]="profile.github" target="_blank" rel="noopener">github ↗</a>

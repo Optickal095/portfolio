@@ -11,7 +11,9 @@ import { Prompt } from '../prompt/prompt';
       <h1>{{ profile.name }}<span class="cursor">_</span></h1>
       <p class="lead">{{ profile.tagline }}</p>
       <div class="actions">
-        <a class="btn primary" [href]="'mailto:' + profile.email">contactar()</a>
+        <a class="btn primary" [href]="'mailto:' + profile.email" i18n="@@hero.contact"
+          >contactar()</a
+        >
         <a class="btn" [href]="profile.github" target="_blank" rel="noopener">github ↗</a>
         <a class="btn" [href]="profile.linkedin" target="_blank" rel="noopener">linkedin ↗</a>
       </div>

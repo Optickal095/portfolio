@@ -8,7 +8,7 @@ import { Prompt } from '../prompt/prompt';
   template: `
     <section id="experiencia" class="section">
       <div class="container stack">
-        <app-prompt command="git log --carrera" />
+        <app-prompt command="git log --carrera" i18n-command="@@experience.command" />
         <ol class="log">
           @for (job of experience; track job.company; let first = $first) {
             <li>

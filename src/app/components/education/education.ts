@@ -8,7 +8,7 @@ import { Prompt } from '../prompt/prompt';
   template: `
     <section id="formacion" class="section">
       <div class="container stack">
-        <app-prompt command="cat formacion.txt" />
+        <app-prompt command="cat formacion.txt" i18n-command="@@education.command" />
         <div class="cols">
           <ul>
             @for (item of education; track item.title) {

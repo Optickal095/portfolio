@@ -8,7 +8,7 @@ import { Prompt } from '../prompt/prompt';
   template: `
     <section id="tecnologias" class="section">
       <div class="container stack">
-        <app-prompt command="ls tecnologias/" />
+        <app-prompt command="ls tecnologias/" i18n-command="@@tech.command" />
         <div class="groups">
           @for (group of groups; track group.title) {
             <div class="group">

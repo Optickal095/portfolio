@@ -51,6 +51,9 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "polyfills": [
+              "@angular/localize/init"
             ]
           },
           "configurations": {
@@ -67,7 +70,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "localize": true
             },
             "development": {
               "optimization": false,
@@ -78,6 +82,23 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.development.ts"
                 }
+              ],
+              "localize": [
+                "es"
+              ]
+            },
+            "development-en": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ],
+              "localize": [
+                "en"
               ]
             }
           },
@@ -91,12 +112,35 @@
             },
             "development": {
               "buildTarget": "portfolio:build:development"
+            },
+            "development-en": {
+              "buildTarget": "portfolio:build:development-en"
             }
           },
           "defaultConfiguration": "development"
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "portfolio:build",
+            "format": "json",
+            "outputPath": "src/locale"
+          }
+        }
+      },
+      "i18n": {
+        "sourceLocale": {
+          "code": "es",
+          "subPath": "es"
+        },
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.json",
+            "subPath": "en"
+          }
         }
       }
     }

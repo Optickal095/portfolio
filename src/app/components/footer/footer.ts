@@ -5,7 +5,7 @@ import { PROFILE } from '../../data/portfolio.data';
   selector: 'app-footer',
   template: `
     <footer>
-      <div class="container">© {{ year }} {{ name }} · hecho con Angular</div>
+      <div class="container" i18n="@@footer.text">© {{ year }} {{ name }} · hecho con Angular</div>
     </footer>
   `,
   styles: `

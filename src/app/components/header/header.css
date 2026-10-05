@@ -37,8 +37,40 @@ nav a:hover {
   color: var(--text);
 }
 
+.languages {
+  display: flex;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 1px solid var(--line);
+}
+
+.languages a {
+  min-width: 36px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: var(--faint-text);
+  text-align: center;
+  text-decoration: none;
+}
+
+.languages a:hover {
+  color: var(--text);
+}
+
+.languages a.current {
+  background: var(--surface);
+  color: var(--accent);
+  font-weight: 700;
+}
+
 @media (max-width: 720px) {
   nav {
     display: none;
+  }
+
+  .languages {
+    margin-left: auto;
+    padding-left: 0;
+    border-left: none;
   }
 }

@@ -8,7 +8,7 @@ import { Prompt } from '../prompt/prompt';
   template: `
     <section id="proyectos" class="section">
       <div class="container stack">
-        <app-prompt command="ls proyectos/" />
+        <app-prompt command="ls proyectos/" i18n-command="@@projects.command" />
         <div class="grid">
           @for (project of projects; track project.slug) {
             <article class="card">
