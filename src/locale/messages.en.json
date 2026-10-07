@@ -62,6 +62,7 @@
     "project.umov.name": "Stroke rehabilitation",
     "project.umov.description": "Web dashboard with charts of each patient's progress so health professionals can follow their recovery.",
     "project.umov.note": "private · umov",
+    "project.pokestats.description": "Interactive dashboard of all 1,025 Pokémon built with React, TypeScript and ECharts: filters, charts with a table view, a comparator and a detail card for each Pokémon. PokeAPI data, Clean Architecture and CI on GitHub Actions.",
     "project.tocata.description": "Social network for emerging musicians and event organizers. MEAN stack with JWT.",
     "project.portfolio.name": "This site",
     "project.portfolio.description": "Angular with standalone components and Signals, deployed on GitHub Pages.",

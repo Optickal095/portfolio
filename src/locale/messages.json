@@ -62,6 +62,7 @@
     "project.umov.name": "Rehabilitación post-ACV",
     "project.umov.description": "Panel web con gráficas de la evolución de pacientes para que los profesionales de la salud sigan su progreso.",
     "project.umov.note": "privado · umov",
+    "project.pokestats.description": "Dashboard interactivo de los 1.025 Pokémon con React, TypeScript y ECharts: filtros, gráficos con vista de tabla, comparador y ficha de cada Pokémon. Datos de PokeAPI, Clean Architecture y CI en GitHub Actions.",
     "project.tocata.description": "Red social para músicos emergentes y organizadores de eventos. MEAN stack con JWT.",
     "project.portfolio.name": "Este sitio",
     "project.portfolio.description": "Angular con componentes standalone y Signals, desplegado en GitHub Pages.",

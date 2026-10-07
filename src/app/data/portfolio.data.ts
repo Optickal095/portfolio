@@ -137,6 +137,15 @@ export const PROJECTS: Project[] = [
     note: $localize`:@@project.umov.note:privado · umov`,
   },
   {
+    slug: 'pokestats/',
+    name: 'PokéStats',
+    description: $localize`:@@project.pokestats.description:Dashboard interactivo de los 1.025 Pokémon con React, TypeScript y ECharts: filtros, gráficos con vista de tabla, comparador y ficha de cada Pokémon. Datos de PokeAPI, Clean Architecture y CI en GitHub Actions.`,
+    links: [
+      { label: 'demo', url: 'https://optickal095.github.io/pokestats/' },
+      { label: 'repo', url: 'https://github.com/Optickal095/pokestats' },
+    ],
+  },
+  {
     slug: 'tocata/',
     name: 'Tocata',
     description: $localize`:@@project.tocata.description:Red social para músicos emergentes y organizadores de eventos. MEAN stack con JWT.`,
