@@ -29,8 +29,12 @@
                 <span i18n="@@ask.thinking">pensando</span><span class="cursor">▍</span>
               </p>
             } @else {
-              <p class="answer" [class.error]="message.error">
-                <span [innerHTML]="message.content | inlineMarkdown"></span>
+              <p class="answer" [class.error]="message.failure">
+                @if (message.failure) {
+                  <span>{{ failures[message.failure] }}</span>
+                } @else {
+                  <span [innerHTML]="message.content | inlineMarkdown"></span>
+                }
                 @if (last && chat.status() === 'streaming') {
                   <span class="cursor">▍</span>
                 }

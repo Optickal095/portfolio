@@ -1,5 +1,5 @@
 import { Component, LOCALE_ID, inject } from '@angular/core';
-import { ChatService } from '../../chat/chat.service';
+import { ChatStore } from '../../chat/application/chat.store';
 import { LANGUAGE_STORAGE_KEY } from '../../i18n';
 
 @Component({
@@ -36,7 +36,7 @@ export class Header {
   protected readonly locale = inject(LOCALE_ID);
   protected readonly links = [
     // The chat section only exists when its API is configured.
-    ...(inject(ChatService).enabled
+    ...(inject(ChatStore).enabled
       ? [{ id: 'pregunta', label: $localize`:@@nav.ask:pregunta` }]
       : []),
     { id: 'experiencia', label: $localize`:@@nav.experience:experiencia` },

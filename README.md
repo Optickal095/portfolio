@@ -17,14 +17,32 @@ Portfolio personal de Eduardo Hernández Oyarzún, Ingeniero Informático fullst
 ```
 src/app/
 ├── components/   # header (con selector ES | EN), hero, ask (chat), experience, projects, tech, education, contact, footer
-├── chat/         # ChatService (signals), lector de Server-Sent Events, pipe de markdown
-└── data/         # contenido del portfolio, con los textos marcados con $localize
+├── chat/         # el chat, en capas (ver "Arquitectura del chat")
+├── data/         # contenido del portfolio, con los textos marcados con $localize
+└── app.config.ts # raíz de composición: elige el adaptador del chat
 src/locale/
 ├── messages.json      # textos en español (idioma base), generados con `ng extract-i18n`
 └── messages.en.json   # traducción al inglés
 scripts/
 └── write-root-index.mjs  # página raíz que envía a /es/ o /en/
 ```
+
+### Arquitectura del chat
+
+Clean Architecture con puertos y adaptadores. Las dependencias apuntan hacia adentro y los componentes nunca hacen `fetch`.
+
+```
+chat/
+├── domain/          ChatMessage, ChatSource, ChatFailure y la regla del historial (historyFor)
+├── application/     Puerto ChatApi (InjectionToken) y ChatStore: estado con Signals y flujo de "preguntar"
+├── infrastructure/  HttpChatApi: fetch + Server-Sent Events; traduce estados HTTP a fallas (429 → tooMany…)
+└── presentation/    Pipe de markdown
+```
+
+- `app.config.ts` provee `CHAT_API`: `HttpChatApi` si hay URL de la API en el `environment`, o `null` para ocultar el chat.
+- `ChatStore` depende solo del puerto. Cambiar el transporte (por ejemplo, a WebSockets) es escribir otro adaptador.
+- El componente `Ask` solo muestra: traduce cada tipo de falla a su texto en el idioma de la página.
+- Tests (`npm test`, Vitest): dominio puro, `ChatStore` con un doble del puerto y `HttpChatApi` con un `fetch` falso.
 
 ## Idiomas
 
@@ -42,6 +60,7 @@ Para cambiar o agregar un texto:
 npm install
 npm start                                   # español, http://localhost:4200
 npx ng serve --configuration development-en # inglés
+npm test                                    # tests unitarios (Vitest)
 npm run deploy                              # compila ambos idiomas y publica en GitHub Pages
 ```
 
