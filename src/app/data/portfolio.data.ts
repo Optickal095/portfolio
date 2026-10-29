@@ -13,12 +13,16 @@ import {
   siLangchain,
   siMongodb,
   siMysql,
+  siN8n,
   siNestjs,
+  siNextdotjs,
   siNodedotjs,
   siPhp,
   siPostgresql,
+  siPostman,
   siPrisma,
   siReact,
+  siSwagger,
   siTypescript,
 } from 'simple-icons';
 
@@ -67,8 +71,11 @@ export interface Education {
 
 export const PROFILE = {
   name: 'Eduardo Hernández Oyarzún',
-  tagline: $localize`:@@profile.tagline:Ingeniero fullstack. Diseño APIs con NestJS, interfaces con Angular y llevo IA a producción sobre Google Cloud.`,
+  summary: $localize`:@@profile.summary:Ingeniero Informático fullstack. Desarrollo aplicaciones web de punta a punta: interfaces con Angular y React, APIs REST con Node.js y NestJS, y bases de datos relacionales y no relacionales (PostgreSQL, MySQL, MongoDB). He llevado a producción servicios serverless en Google Cloud y un agente de IA por WhatsApp con OpenAI y LangChain que procesa texto, imágenes y audio. Uso IA como apoyo al desarrollo, guiado por especificaciones, y cuido que el código sea mantenible (Clean Architecture, SOLID).`,
   email: 'eduardo.he095@gmail.com',
+  phone: '+56 9 7865 7499',
+  /** Relative to each language folder (/portfolio/es/, /portfolio/en/); the file lives in public/. */
+  cv: 'Eduardo_Hernandez_Oyarzun_CV.pdf',
   linkedin: 'https://www.linkedin.com/in/eduardohernandezoyarzun',
   github: 'https://github.com/Optickal095',
 };
@@ -85,8 +92,9 @@ export const EXPERIENCE: Experience[] = [
       $localize`:@@exp.canai.h3:Agente de IA por WhatsApp con OpenAI y LangChain: envío de órdenes de trabajo, verificación de imágenes, revisión de boletas y transcripción de audios.`,
       $localize`:@@exp.canai.h4:Funciones serverless event-driven en Google Cloud (Cloud Run, Pub/Sub, Cloud Storage).`,
       $localize`:@@exp.canai.h5:Arquitectura multi-tenant y patrón Repository (DDD).`,
+      $localize`:@@exp.canai.h6:Despliegues a Google Cloud y resolución de incidencias en producción a partir de los logs; automatizaciones con n8n.`,
     ],
-    stack: ['angular', 'nestjs', 'postgresql', 'prisma', 'gcp', 'langchain', 'openai'],
+    stack: ['Angular', 'NestJS', 'PostgreSQL', 'Prisma', 'Google Cloud', 'LangChain', 'OpenAI', 'n8n'],
   },
   {
     role: $localize`:@@exp.umov.role:Desarrollador FullStack`,
@@ -98,7 +106,7 @@ export const EXPERIENCE: Experience[] = [
       $localize`:@@exp.umov.h2:Módulos escalables con React y Ant Design en JavaScript y TypeScript, MySQL y consumo de APIs.`,
       $localize`:@@exp.umov.h3:Colaboración con diseñadores, CEO y CIO del proyecto.`,
     ],
-    stack: ['react', 'ant-design', 'javascript', 'typescript', 'mysql'],
+    stack: ['React', 'Ant Design', 'JavaScript', 'TypeScript', 'MySQL'],
   },
   {
     role: $localize`:@@exp.thesis.role:Proyecto de Título`,
@@ -109,7 +117,7 @@ export const EXPERIENCE: Experience[] = [
       $localize`:@@exp.thesis.h1:MEAN stack (MongoDB, Express.js, Angular, Node.js), Bootstrap y JWT para autenticación.`,
       $localize`:@@exp.thesis.h2:Integración de APIs y servicios externos; optimización de rendimiento y seguridad.`,
     ],
-    stack: ['angular', 'node.js', 'express', 'mongodb', 'jwt'],
+    stack: ['Angular', 'Node.js', 'Express', 'MongoDB', 'JWT'],
   },
   {
     role: $localize`:@@exp.ez.role:Desarrollador`,
@@ -120,46 +128,57 @@ export const EXPERIENCE: Experience[] = [
       $localize`:@@exp.ez.h1:Desarrollo con PHP y MySQL en equipo.`,
       $localize`:@@exp.ez.h2:Pruebas y levantamiento de requerimientos con el cliente.`,
     ],
-    stack: ['php', 'mysql'],
+    stack: ['PHP', 'MySQL'],
   },
 ];
 
+const CODE = $localize`:@@project.code:Código`;
+
 export const PROJECTS: Project[] = [
-  {
-    kind: $localize`:@@project.agent.kind:Inteligencia artificial`,
-    name: $localize`:@@project.agent.name:Agente de IA en producción`,
-    description: $localize`:@@project.agent.description:Conversa con clientes por WhatsApp, envía órdenes de trabajo y procesa las respuestas con OpenAI, LangChain y Google Vision: valida imágenes, revisa boletas y transcribe audios.`,
-    note: $localize`:@@project.agent.note:privado · canai`,
-  },
-  {
-    kind: $localize`:@@project.umov.kind:Salud`,
-    name: $localize`:@@project.umov.name:Rehabilitación post-ACV`,
-    description: $localize`:@@project.umov.description:Panel web con gráficas de la evolución de pacientes para que los profesionales de la salud sigan su progreso.`,
-    note: $localize`:@@project.umov.note:privado · umov`,
-  },
   {
     kind: $localize`:@@project.pokestats.kind:Dashboard de datos`,
     name: 'PokéStats',
     description: $localize`:@@project.pokestats.description:Dashboard interactivo de los 1.025 Pokémon con React, TypeScript y ECharts: filtros, gráficos con vista de tabla, comparador y ficha de cada Pokémon. Datos de PokeAPI, Clean Architecture y CI en GitHub Actions.`,
     links: [
-      { label: 'demo', url: 'https://optickal095.github.io/pokestats/' },
-      { label: 'repo', url: 'https://github.com/Optickal095/pokestats' },
+      { label: 'Demo', url: 'https://optickal095.github.io/pokestats/' },
+      { label: CODE, url: 'https://github.com/Optickal095/pokestats' },
     ],
+  },
+  {
+    kind: $localize`:@@project.cv.kind:Asistente con IA`,
+    name: $localize`:@@project.cv.name:Pregúntale a mi CV`,
+    description: $localize`:@@project.cv.description:Chatbot que responde preguntas sobre mi experiencia usando solo mi CV, en español o inglés. NestJS, LangChain y RAG con embeddings de Gemini, respuestas en streaming y Clean Architecture.`,
+    links: [
+      { label: $localize`:@@project.cv.try:Probar aquí`, url: '#pregunta' },
+      { label: CODE, url: 'https://github.com/Optickal095/pregunta-a-mi-cv' },
+    ],
+  },
+  {
+    kind: $localize`:@@project.agent.kind:Inteligencia artificial`,
+    name: $localize`:@@project.agent.name:Agente de IA en producción`,
+    description: $localize`:@@project.agent.description:Conversa con clientes por WhatsApp, envía órdenes de trabajo y procesa las respuestas con OpenAI, LangChain y Google Vision: valida imágenes, revisa boletas y transcribe audios.`,
+    note: $localize`:@@project.agent.note:Privado · Canai`,
+  },
+  {
+    kind: $localize`:@@project.umov.kind:Salud`,
+    name: $localize`:@@project.umov.name:Rehabilitación post-ACV`,
+    description: $localize`:@@project.umov.description:Panel web con gráficas de la evolución de pacientes para que los profesionales de la salud sigan su progreso.`,
+    note: $localize`:@@project.umov.note:Privado · uMov`,
   },
   {
     kind: $localize`:@@project.tocata.kind:Proyecto de título`,
     name: 'Tocata',
     description: $localize`:@@project.tocata.description:Red social para músicos emergentes y organizadores de eventos. MEAN stack con JWT.`,
     links: [
-      { label: 'frontend', url: 'https://github.com/Optickal095/TocataFrontend' },
-      { label: 'backend', url: 'https://github.com/Optickal095/TocataBackend' },
+      { label: 'Frontend', url: 'https://github.com/Optickal095/TocataFrontend' },
+      { label: 'Backend', url: 'https://github.com/Optickal095/TocataBackend' },
     ],
   },
   {
     kind: 'Portfolio',
     name: $localize`:@@project.portfolio.name:Este sitio`,
-    description: $localize`:@@project.portfolio.description:Angular con componentes standalone y Signals, desplegado en GitHub Pages.`,
-    links: [{ label: 'repo', url: 'https://github.com/Optickal095/portfolio' }],
+    description: $localize`:@@project.portfolio.description:Angular con componentes standalone y Signals, en español e inglés con i18n y publicado en GitHub Pages.`,
+    links: [{ label: CODE, url: 'https://github.com/Optickal095/portfolio' }],
   },
 ];
 
@@ -182,6 +201,7 @@ export const TECH: TechGroup[] = [
     items: [
       icon('Angular', siAngular, '#dd0031'),
       icon('React', siReact),
+      icon('Next.js', siNextdotjs, LIGHT),
       icon('HTML5', siHtml5),
       icon('CSS3', siCss, '#1572b6'),
       icon('Bootstrap', siBootstrap, '#8c5cf0'),
@@ -194,6 +214,7 @@ export const TECH: TechGroup[] = [
       icon('NestJS', siNestjs),
       icon('Express', siExpress, LIGHT),
       icon('Prisma', siPrisma, LIGHT),
+      icon('Swagger', siSwagger),
     ],
   },
   {
@@ -209,6 +230,7 @@ export const TECH: TechGroup[] = [
     items: [
       icon('Google Cloud', siGooglecloud),
       icon('LangChain', siLangchain),
+      icon('n8n', siN8n),
       // OpenAI is not in simple-icons; a generic sparkle stands in for it.
       {
         name: 'OpenAI',
@@ -229,6 +251,7 @@ export const TECH: TechGroup[] = [
       },
       icon('Git', siGit),
       icon('GitHub', siGithub, LIGHT),
+      icon('Postman', siPostman),
       icon('Insomnia', siInsomnia, '#8b6cf6'),
     ],
   },

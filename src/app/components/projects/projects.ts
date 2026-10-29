@@ -20,7 +20,11 @@ import { SectionTitle } from '../section-title/section-title';
                   <span>{{ project.note }}</span>
                 }
                 @for (link of project.links; track link.url) {
-                  <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }} ↗</a>
+                  @if (link.url.startsWith('#')) {
+                    <a [href]="link.url">{{ link.label }} ↓</a>
+                  } @else {
+                    <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }} ↗</a>
+                  }
                 }
               </div>
             </article>

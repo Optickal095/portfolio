@@ -12,6 +12,7 @@
   --accent: #7aa2f7;
   --accent-text: #0b0e14;
   --danger: #f7768e;
+  --success: #73daca;
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
@@ -97,6 +98,12 @@ a:focus-visible {
 .btn:hover {
   border-color: var(--accent);
   transform: translateY(-1px);
+}
+
+button.btn {
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .btn.primary {

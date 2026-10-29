@@ -23,3 +23,9 @@ npx ng serve --configuration development-en # inglés
 npm test
 npm run deploy   # ejecutar desde PowerShell/cmd: en Git Bash "/portfolio/" se convierte en ruta de Windows
 ```
+
+## Contenido
+
+- El perfil (`profile.summary`) se basa en el CV general (`D:\Projects\Eduardo_Hernandez_O_v2.pdf`); el PDF descargable está en `public/Eduardo_Hernandez_Oyarzun_CV.pdf`. Si Eduardo actualiza su CV, reemplaza ese archivo.
+- La etiqueta "Disponible para trabajar" (`hero.available`) se quita cuando consiga trabajo.
+- Canai siempre en pasado. No afirmar que lideró equipos.

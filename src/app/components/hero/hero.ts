@@ -1,19 +1,24 @@
 import { Component } from '@angular/core';
 import { PROFILE } from '../../data/portfolio.data';
+import { ContactLinks } from '../contact-links/contact-links';
 
 @Component({
   selector: 'app-hero',
+  imports: [ContactLinks],
   template: `
     <section id="inicio" class="container hero">
       <p class="kicker" i18n="@@hero.kicker">Ingeniero Informático · Desarrollador fullstack</p>
-      <h1>{{ profile.name }}</h1>
-      <p class="lead">{{ profile.tagline }}</p>
+      <div class="title">
+        <h1>{{ profile.name }}</h1>
+        <span class="status" i18n="@@hero.available">Disponible para trabajar</span>
+      </div>
+      <p class="lead">{{ profile.summary }}</p>
+      <app-contact-links />
       <div class="actions">
         <a class="btn primary" [href]="'mailto:' + profile.email" i18n="@@hero.contact"
           >Contactar</a
         >
-        <a class="btn" [href]="profile.github" target="_blank" rel="noopener">GitHub ↗</a>
-        <a class="btn" [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" [href]="profile.cv" download i18n="@@hero.downloadCv">Descargar CV</a>
       </div>
     </section>
   `,
@@ -21,9 +26,22 @@ import { PROFILE } from '../../data/portfolio.data';
     .hero {
       display: flex;
       flex-direction: column;
-      gap: 26px;
-      padding-top: 104px;
-      padding-bottom: 96px;
+      gap: 24px;
+      padding-top: 96px;
+      padding-bottom: 88px;
+    }
+
+    .kicker {
+      margin: 0 0 -8px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px 20px;
     }
 
     h1 {
@@ -35,18 +53,34 @@ import { PROFILE } from '../../data/portfolio.data';
       text-wrap: balance;
     }
 
-    .kicker {
-      margin: 0 0 -10px;
-      color: var(--accent);
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid color-mix(in srgb, var(--success) 40%, transparent);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--success) 12%, transparent);
+      color: var(--success);
+      font-size: 0.875rem;
       font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .status::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: currentColor;
     }
 
     .lead {
       margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.6;
+      font-size: 1.125rem;
+      line-height: 1.7;
       color: var(--muted);
-      max-width: 640px;
+      max-width: 72ch;
     }
 
     .actions {
@@ -57,8 +91,12 @@ import { PROFILE } from '../../data/portfolio.data';
 
     @media (max-width: 720px) {
       .hero {
-        padding-top: 64px;
-        padding-bottom: 64px;
+        padding-top: 56px;
+        padding-bottom: 56px;
+      }
+
+      .lead {
+        font-size: 1.05rem;
       }
     }
   `,
