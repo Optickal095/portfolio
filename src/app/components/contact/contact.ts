@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { PROFILE } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-contact',
-  imports: [Prompt],
+  imports: [SectionTitle],
   template: `
     <section id="contacto" class="section">
       <div class="container stack contact">
-        <app-prompt command="echo $CONTACTO" i18n-command="@@contact.command" />
+        <app-section-title title="Contacto" i18n-title="@@contact.title" />
         <a class="email" [href]="'mailto:' + profile.email">{{ profile.email }}</a>
         <p i18n="@@contact.openTo">Abierto a roles fullstack, frontend Angular o backend NestJS.</p>
         <div class="links">
-          <a [href]="profile.linkedin" target="_blank" rel="noopener">linkedin ↗</a>
-          <a [href]="profile.github" target="_blank" rel="noopener">github ↗</a>
+          <a [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a [href]="profile.github" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
     </section>
@@ -45,8 +45,7 @@ import { Prompt } from '../prompt/prompt';
     .links {
       display: flex;
       gap: 20px;
-      font-family: var(--mono);
-      font-size: 0.875rem;
+      font-weight: 600;
     }
 
     .links a {

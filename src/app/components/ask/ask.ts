@@ -11,11 +11,11 @@ import {
 import { ChatStore } from '../../chat/application/chat.store';
 import type { ChatFailure } from '../../chat/domain/chat';
 import { InlineMarkdownPipe } from '../../chat/presentation/inline-markdown.pipe';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-ask',
-  imports: [Prompt, InlineMarkdownPipe],
+  imports: [SectionTitle, InlineMarkdownPipe],
   templateUrl: './ask.html',
   styleUrl: './ask.css',
 })

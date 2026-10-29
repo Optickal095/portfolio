@@ -11,10 +11,8 @@
   --faint: #4a5570;
   --accent: #7aa2f7;
   --accent-text: #0b0e14;
-  --prompt: #9ece6a;
   --danger: #f7768e;
   --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
 }
 
 * {
@@ -89,8 +87,8 @@ a:focus-visible {
   border-radius: 8px;
   color: var(--text);
   text-decoration: none;
-  font-family: var(--mono);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   transition:
     border-color 0.15s,
     transform 0.15s;
@@ -115,10 +113,9 @@ a:focus-visible {
 }
 
 .tags span {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--faint-text);
-  border: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: var(--line);
   border-radius: 6px;
   padding: 3px 8px;
 }

@@ -7,10 +7,10 @@ import { LANGUAGE_STORAGE_KEY } from '../../i18n';
   template: `
     <header>
       <div class="container inner">
-        <a href="#inicio" class="brand">~/eduardo</a>
+        <a href="#inicio" class="brand">Eduardo Hernández</a>
         <nav>
           @for (link of links; track link.id) {
-            <a [href]="'#' + link.id">./{{ link.label }}</a>
+            <a [href]="'#' + link.id">{{ link.label }}</a>
           }
         </nav>
         <div class="languages" role="group" aria-label="Idioma / Language">
@@ -37,12 +37,12 @@ export class Header {
   protected readonly links = [
     // The chat section only exists when its API is configured.
     ...(inject(ChatStore).enabled
-      ? [{ id: 'pregunta', label: $localize`:@@nav.ask:pregunta` }]
+      ? [{ id: 'pregunta', label: $localize`:@@nav.ask:Pregúntale` }]
       : []),
-    { id: 'experiencia', label: $localize`:@@nav.experience:experiencia` },
-    { id: 'proyectos', label: $localize`:@@nav.projects:proyectos` },
-    { id: 'tecnologias', label: $localize`:@@nav.tech:tecnologias` },
-    { id: 'contacto', label: $localize`:@@nav.contact:contacto` },
+    { id: 'experiencia', label: $localize`:@@nav.experience:Experiencia` },
+    { id: 'proyectos', label: $localize`:@@nav.projects:Proyectos` },
+    { id: 'tecnologias', label: $localize`:@@nav.tech:Tecnologías` },
+    { id: 'contacto', label: $localize`:@@nav.contact:Contacto` },
   ];
   protected readonly languages = [
     { code: 'es', label: 'ES', name: 'Español' },

@@ -12,12 +12,11 @@ header {
   align-items: center;
   gap: 24px;
   min-height: 64px;
-  font-family: var(--mono);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
 }
 
 .brand {
-  color: var(--accent);
+  color: var(--text);
   font-weight: 700;
   text-decoration: none;
 }
@@ -29,7 +28,7 @@ nav {
 }
 
 nav a {
-  color: var(--faint-text);
+  color: var(--muted);
   text-decoration: none;
 }
 
@@ -49,6 +48,7 @@ nav a:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: var(--faint-text);
+  font-size: 0.85rem;
   text-align: center;
   text-decoration: none;
 }

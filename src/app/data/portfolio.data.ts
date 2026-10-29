@@ -37,7 +37,8 @@ export interface Experience {
 }
 
 export interface Project {
-  slug: string;
+  /** Short category shown above the name. */
+  kind: string;
   name: string;
   description: string;
   note?: string;
@@ -125,19 +126,19 @@ export const EXPERIENCE: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
-    slug: $localize`:@@project.agent.slug:agente-ia-whatsapp/`,
+    kind: $localize`:@@project.agent.kind:Inteligencia artificial`,
     name: $localize`:@@project.agent.name:Agente de IA en producción`,
     description: $localize`:@@project.agent.description:Conversa con clientes por WhatsApp, envía órdenes de trabajo y procesa las respuestas con OpenAI, LangChain y Google Vision: valida imágenes, revisa boletas y transcribe audios.`,
     note: $localize`:@@project.agent.note:privado · canai`,
   },
   {
-    slug: 'umov/',
+    kind: $localize`:@@project.umov.kind:Salud`,
     name: $localize`:@@project.umov.name:Rehabilitación post-ACV`,
     description: $localize`:@@project.umov.description:Panel web con gráficas de la evolución de pacientes para que los profesionales de la salud sigan su progreso.`,
     note: $localize`:@@project.umov.note:privado · umov`,
   },
   {
-    slug: 'pokestats/',
+    kind: $localize`:@@project.pokestats.kind:Dashboard de datos`,
     name: 'PokéStats',
     description: $localize`:@@project.pokestats.description:Dashboard interactivo de los 1.025 Pokémon con React, TypeScript y ECharts: filtros, gráficos con vista de tabla, comparador y ficha de cada Pokémon. Datos de PokeAPI, Clean Architecture y CI en GitHub Actions.`,
     links: [
@@ -146,7 +147,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'tocata/',
+    kind: $localize`:@@project.tocata.kind:Proyecto de título`,
     name: 'Tocata',
     description: $localize`:@@project.tocata.description:Red social para músicos emergentes y organizadores de eventos. MEAN stack con JWT.`,
     links: [
@@ -155,7 +156,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    slug: 'portfolio/',
+    kind: 'Portfolio',
     name: $localize`:@@project.portfolio.name:Este sitio`,
     description: $localize`:@@project.portfolio.description:Angular con componentes standalone y Signals, desplegado en GitHub Pages.`,
     links: [{ label: 'repo', url: 'https://github.com/Optickal095/portfolio' }],

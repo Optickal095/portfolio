@@ -1,21 +1,21 @@
 @if (chat.enabled) {
   <section id="pregunta" class="section">
     <div class="container stack">
-      <app-prompt command="./pregunta-a-mi-cv" />
+      <app-section-title title="Pregúntale a mi CV" i18n-title="@@ask.title" />
       <p class="intro" i18n="@@ask.intro">
-        Pregúntale a mi CV. Un asistente con IA responde usando solo la información de mi
+        Un asistente con IA responde usando solo la información de mi
         experiencia, construido con NestJS, LangChain y RAG.
         <a href="https://github.com/Optickal095/pregunta-a-mi-cv" target="_blank" rel="noopener"
           >ver código ↗</a
         >
       </p>
 
-      <div class="terminal">
+      <div class="chat-box">
         <div class="bar">
-          <span>pregunta-a-mi-cv</span>
+          <span i18n="@@ask.boxTitle">Asistente con IA</span>
           @if (chat.messages().length && !chat.busy()) {
             <button type="button" class="clear" (click)="chat.clear()" i18n="@@ask.clear">
-              limpiar
+              Limpiar
             </button>
           }
         </div>
@@ -23,10 +23,10 @@
         <div class="log" #log aria-live="polite">
           @for (message of chat.messages(); track $index; let last = $last) {
             @if (message.role === 'user') {
-              <p class="question"><span class="mark">›</span> {{ message.content }}</p>
+              <p class="question">{{ message.content }}</p>
             } @else if (last && chat.status() === 'thinking') {
               <p class="answer thinking">
-                <span i18n="@@ask.thinking">pensando</span><span class="cursor">▍</span>
+                <span i18n="@@ask.thinking">Pensando…</span>
               </p>
             } @else {
               <p class="answer" [class.error]="message.failure">
@@ -41,7 +41,7 @@
               </p>
               @if (message.sources?.length) {
                 <p class="sources">
-                  <span class="sources-label" i18n="@@ask.sources">fuentes:</span>
+                  <span class="sources-label" i18n="@@ask.sources">Fuentes:</span>
                   @for (source of message.sources; track source.es) {
                     <span class="source">{{ source[locale] }}</span>
                   }
@@ -62,7 +62,6 @@
 
         <form (submit)="submit($event)">
           <label class="sr-only" for="question" i18n="@@ask.label">Tu pregunta</label>
-          <span class="mark" aria-hidden="true">›</span>
           <input
             #input
             id="question"
@@ -76,7 +75,7 @@
             [disabled]="chat.busy()"
           />
           <button type="submit" [disabled]="chat.busy() || !draft().trim()" i18n="@@ask.send">
-            enviar ↵
+            Preguntar
           </button>
         </form>
       </div>

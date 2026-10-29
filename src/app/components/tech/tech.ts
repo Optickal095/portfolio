@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { TECH } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-tech',
-  imports: [Prompt],
+  imports: [SectionTitle],
   template: `
     <section id="tecnologias" class="section">
       <div class="container stack">
-        <app-prompt command="ls tecnologias/" i18n-command="@@tech.command" />
+        <app-section-title title="Tecnologías" i18n-title="@@tech.title" />
         <div class="groups">
           @for (group of groups; track group.title) {
             <div class="group">
@@ -55,11 +55,11 @@ import { Prompt } from '../prompt/prompt';
 
     h3 {
       margin: 0;
-      font-family: var(--mono);
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--faint-text);
-      text-transform: lowercase;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
     ul {

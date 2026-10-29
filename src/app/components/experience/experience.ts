@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { EXPERIENCE } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-experience',
-  imports: [Prompt],
+  imports: [SectionTitle],
   template: `
     <section id="experiencia" class="section">
       <div class="container stack">
-        <app-prompt command="git log --carrera" i18n-command="@@experience.command" />
+        <app-section-title title="Experiencia" i18n-title="@@experience.title" />
         <ol class="log">
           @for (job of experience; track job.company; let first = $first) {
             <li>
@@ -16,7 +16,7 @@ import { Prompt } from '../prompt/prompt';
               <span class="when">{{ job.period }}</span>
               <div class="body">
                 <h3>
-                  {{ job.role }} <span>&#64; {{ job.company }}</span>
+                  {{ job.role }} <span>· {{ job.company }}</span>
                 </h3>
                 <p>{{ job.summary }}</p>
                 <ul>
@@ -74,8 +74,8 @@ import { Prompt } from '../prompt/prompt';
     }
 
     .when {
-      font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
+      font-weight: 600;
       color: var(--faint-text);
       padding-top: 4px;
     }

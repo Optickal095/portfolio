@@ -1,21 +1,19 @@
 import { Component } from '@angular/core';
 import { PROFILE } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
 
 @Component({
   selector: 'app-hero',
-  imports: [Prompt],
   template: `
     <section id="inicio" class="container hero">
-      <app-prompt command="whoami" />
-      <h1>{{ profile.name }}<span class="cursor">_</span></h1>
+      <p class="kicker" i18n="@@hero.kicker">Ingeniero Informático · Desarrollador fullstack</p>
+      <h1>{{ profile.name }}</h1>
       <p class="lead">{{ profile.tagline }}</p>
       <div class="actions">
         <a class="btn primary" [href]="'mailto:' + profile.email" i18n="@@hero.contact"
-          >contactar()</a
+          >Contactar</a
         >
-        <a class="btn" [href]="profile.github" target="_blank" rel="noopener">github ↗</a>
-        <a class="btn" [href]="profile.linkedin" target="_blank" rel="noopener">linkedin ↗</a>
+        <a class="btn" [href]="profile.github" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" [href]="profile.linkedin" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </section>
   `,
@@ -33,25 +31,14 @@ import { Prompt } from '../prompt/prompt';
       font-size: clamp(2.4rem, 7vw, 4rem);
       line-height: 1.04;
       letter-spacing: -0.03em;
-      font-weight: 600;
+      font-weight: 700;
       text-wrap: balance;
     }
 
-    .cursor {
+    .kicker {
+      margin: 0 0 -10px;
       color: var(--accent);
-      animation: blink 1.1s steps(1) infinite;
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .cursor {
-        animation: none;
-      }
+      font-weight: 600;
     }
 
     .lead {

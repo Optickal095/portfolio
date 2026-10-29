@@ -9,7 +9,7 @@ Portfolio personal de Eduardo Hernández Oyarzún, Ingeniero Informático fullst
 - Angular 22 (componentes standalone, Signals, control flow `@for` / `@if`)
 - Internacionalización con `@angular/localize` (i18n de Angular): español e inglés
 - Chat "Pregúntale a mi CV" con respuestas en streaming, conectado a la API [pregunta-a-mi-cv](https://github.com/Optickal095/pregunta-a-mi-cv)
-- Diseño estilo terminal, sin librerías de UI
+- Diseño oscuro y sobrio, sin librerías de UI
 - Despliegue a GitHub Pages con `angular-cli-ghpages`
 
 ## Estructura

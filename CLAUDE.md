@@ -13,7 +13,7 @@ Portfolio de Eduardo en Angular 22 (standalone, Signals), en español e inglés 
 
 - Todo texto visible lleva i18n: `i18n="@@id"` o `` $localize`:@@id:…` ``; después `npx ng extract-i18n` y la traducción en `src/locale/messages.en.json`.
 - El chat consume la API `pregunta-a-mi-cv` (Render): `POST /chat/stream` con `{ message, history, locale }`, eventos SSE `token`, `sources`, `done`/`error`.
-- Diseño actual: estilo terminal oscuro. Eduardo duda de los títulos tipo comando (`$ git log --carrera`) porque los reclutadores pueden no entenderlos; pendiente decidir.
+- Diseño: oscuro y sobrio, sin estilo de consola (Eduardo lo descartó porque confunde a los reclutadores). Títulos de sección con `app-section-title` (texto normal + barra de acento), textos en lenguaje natural, solo IBM Plex Sans. No vuelvas a introducir comandos, `$`, `./`, cursores ni fuente monoespaciada.
 
 ## Comandos
 

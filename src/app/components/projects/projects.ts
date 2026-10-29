@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { PROJECTS } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-projects',
-  imports: [Prompt],
+  imports: [SectionTitle],
   template: `
     <section id="proyectos" class="section">
       <div class="container stack">
-        <app-prompt command="ls proyectos/" i18n-command="@@projects.command" />
+        <app-section-title title="Proyectos" i18n-title="@@projects.title" />
         <div class="grid">
-          @for (project of projects; track project.slug) {
+          @for (project of projects; track project.name) {
             <article class="card">
-              <span class="slug">{{ project.slug }}</span>
+              <span class="kind">{{ project.kind }}</span>
               <h3>{{ project.name }}</h3>
               <p>{{ project.description }}</p>
               <div class="meta">
@@ -54,9 +54,11 @@ import { Prompt } from '../prompt/prompt';
       transform: translateY(-2px);
     }
 
-    .slug {
-      font-family: var(--mono);
-      font-size: 0.8rem;
+    .kind {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--accent);
     }
 
@@ -77,12 +79,12 @@ import { Prompt } from '../prompt/prompt';
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       color: var(--faint-text);
     }
 
     .meta a {
+      font-weight: 600;
       text-decoration: none;
     }
 

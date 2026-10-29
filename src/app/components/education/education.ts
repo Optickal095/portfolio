@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { EDUCATION, LANGUAGES } from '../../data/portfolio.data';
-import { Prompt } from '../prompt/prompt';
+import { SectionTitle } from '../section-title/section-title';
 
 @Component({
   selector: 'app-education',
-  imports: [Prompt],
+  imports: [SectionTitle],
   template: `
     <section id="formacion" class="section">
       <div class="container stack">
-        <app-prompt command="cat formacion.txt" i18n-command="@@education.command" />
+        <app-section-title title="Formación" i18n-title="@@education.title" />
         <div class="cols">
           <ul>
             @for (item of education; track item.title) {
@@ -57,8 +57,7 @@ import { Prompt } from '../prompt/prompt';
 
     span {
       color: var(--faint-text);
-      font-family: var(--mono);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
     }
 
     @media (max-width: 720px) {
